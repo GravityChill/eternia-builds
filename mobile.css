@@ -1,0 +1,130 @@
+/* Mobile layout for Eternia Build Planner */
+@media (max-width: 760px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        height: auto;
+        min-height: 100dvh;
+        padding: 12px;
+        padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    }
+
+    .panel {
+        width: 100%;
+        min-width: 0;
+        padding: 14px;
+        box-sizing: border-box;
+        overflow: visible;
+    }
+
+    #database-panel {
+        flex: none;
+        order: 2;
+    }
+
+    #build-panel {
+        flex: none;
+        order: 1;
+        min-width: 0;
+    }
+
+    #build-panel h2 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-size: 1.25rem;
+    }
+
+    .header-stats {
+        gap: 8px;
+        margin-bottom: 14px;
+    }
+
+    .stat-box {
+        flex: 1 1 30%;
+        min-width: 0;
+        font-size: 0.75rem;
+    }
+
+    .stat-value {
+        font-size: 1.1rem;
+        white-space: nowrap;
+    }
+
+    .scrollable {
+        flex: none;
+        overflow-y: visible;
+        padding-right: 0;
+    }
+
+    #build-container:empty {
+        display: none;
+    }
+
+    .family-group {
+        padding: 8px;
+        margin-bottom: 12px;
+    }
+
+    .tree-group {
+        margin-bottom: 12px;
+        padding-left: 8px;
+    }
+
+    .tree-header {
+        min-height: 48px;
+        padding: 10px 12px;
+        box-sizing: border-box;
+    }
+
+    .tree-content {
+        padding: 8px;
+    }
+
+    .skill-card {
+        gap: 10px;
+        min-height: 48px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .skill-card > div:first-child {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .skill-card button,
+    .btn-remove {
+        min-width: 40px;
+        min-height: 40px;
+        touch-action: manipulation;
+    }
+
+    #btn-export {
+        min-height: 44px;
+        margin-bottom: 12px !important;
+        touch-action: manipulation;
+    }
+}
+
+@media (max-width: 380px) {
+    body {
+        padding: 8px;
+    }
+
+    .panel {
+        padding: 10px;
+    }
+
+    .header-stats {
+        flex-wrap: wrap;
+    }
+
+    .stat-box {
+        flex-basis: 45%;
+    }
+
+    .skill-card {
+        align-items: flex-start;
+    }
+}
