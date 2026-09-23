@@ -369,14 +369,15 @@ Light;Light Speed;INTERMEDIATE;10;1;;;;;;;
 Light;Prism Scattershot;MASTER;10;1;;;;;;;
 Fortuna;Fate Attunement;OPENER;10;0;;;;;;;
 Fortuna;Fortuna Aura;AURA;10;0;;;;;;;
-Fortuna;Fortuna Invul;BASIC;10;1;;;;;;;
-Fortuna;Fortuna AoE;BASIC;10;1;;;;;;;
-Faith; Faith Class Unlock;5;0
-Necromancy; Necromancy Class Unlock;5;0
-Necromancy; Skeleon Uprising;10;0
-Druid; Druid Unlock;5;0
-Wayfinding; Wayfinding Unlock;5;0
-Alchemy;T1 Alchemist;10;0
-Artificer;T1 Artificer;10;0
-Artificer;Golemcraft;5;0
-Artificer;Golem Summon;5;0
+Fortuna;Space;BASIC;10;1;;;;;;;
+Fortuna;Death;BASIC;10;1;;;;;;;
+Fortuna;Hope;BASIC;10;1;;;;;;;
+Faith; Faith Class Unlock;BASIC;5;0;;;;;;;
+Necromancy; Necromancy Class Unlock;BASIC;5;0;;;;;;;
+Necromancy; Skeleon Uprising;10;0;;;;;;;
+Druid; Druid Unlock;BASIC;5;0;;;;;;;
+Wayfinding; Wayfinding Unlock;BASIC;5;0;;;;;;;
+Alchemy;T1 Alchemist;BASIC;10;0;;;;;;;
+Artificer;T1 Artificer;BASIC;10;0;;;;;;;
+Artificer;Golemcraft;BASIC;5;0;;;;;;;
+Artificer;Golem Summon;BASIC;5;0;;;;;;;
