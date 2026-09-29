@@ -226,13 +226,11 @@
             const hasOpenerDesteElemento = build.some(s => s.elemento === skill.elemento && s.categoria.toUpperCase() === 'OPENER');
 
             // --- 1. RULES FOR FREE TREES (RACIAL / STANCES / STYLES) ---
-
-            const racialTrees = relations["Racials"];
-
+            
             const isRacial =
-                el.includes('RACIAL') ||
+                el.includes('Racials') ||
                 racialTrees.some(race => race.toUpperCase() === el);
-                
+
             const isFreeTree = el.includes(isRacial) || el.includes('COMBAT STYLES') || cat.includes('STANCE');
 
             if (isFreeTree) {
