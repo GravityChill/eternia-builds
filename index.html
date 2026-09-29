@@ -175,7 +175,7 @@
 
     <script>
         const relations = {
-            "Racials":["Drakanite", "Faeborne", "Human", "Beastkin", "Sarradian", "Gorgon", "Aerodyne"],
+            "Racial":["Drakanite", "Faeborne", "Human", "Beastkin", "Sarradian", "Gorgon", "Aerodyne"],
             "Air": ["Gravity", "Sound", "Lightning"],
             "Water": ["Mist", "Wellspring", "Ice", "Ink"],
             "Earth": ["Sand", "Crystal", "Metal"],
@@ -227,11 +227,11 @@
 
             // --- 1. RULES FOR FREE TREES (RACIAL / STANCES / STYLES) ---
             
-            //const isRacial =
-                //el.includes('Racials') ||
-               // racialTrees.some(race => race.toUpperCase() === el);
+            const isRacial =
+                el.includes('Racials') ||
+                racialTrees.some(race => race.toUpperCase() === el);
 
-            const isFreeTree = el.includes('COMBAT STYLES') || cat.includes('STANCE');
+            const isFreeTree = isRacial || el.includes('COMBAT STYLES') || cat.includes('STANCE');
 
             if (isFreeTree) {
                 if (cat === 'INTERMEDIATE' || cat === 'MASTER') {
@@ -417,8 +417,11 @@
             const allFamilyMembers = Object.entries(relations).flatMap(([base, subs]) => [base, ...subs]);
 
             // --- BLOCK 1: RACIALS ---
-            renderSection("Racials", (el) => 
-                el.toUpperCase().includes('RACIAL')
+            renderSection("Racials", (el) =>
+                el.toUpperCase().includes('RACIAL') ||
+                relations["Racials"].some(
+                    race => race.toUpperCase() === el.toUpperCase()
+                )
             );
 
             // --- BLOCK 2: COMBAT STYLES ---
