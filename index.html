@@ -227,11 +227,11 @@
 
             // --- 1. RULES FOR FREE TREES (RACIAL / STANCES / STYLES) ---
             
-            const isRacial =
-                el.includes('Racials') ||
-                racialTrees.some(race => race.toUpperCase() === el);
+            //const isRacial =
+                //el.includes('Racials') ||
+               // racialTrees.some(race => race.toUpperCase() === el);
 
-            const isFreeTree = el.includes(isRacial) || el.includes('COMBAT STYLES') || cat.includes('STANCE');
+            const isFreeTree = el.includes('COMBAT STYLES') || cat.includes('STANCE');
 
             if (isFreeTree) {
                 if (cat === 'INTERMEDIATE' || cat === 'MASTER') {
