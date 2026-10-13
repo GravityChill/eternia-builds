@@ -190,24 +190,6 @@
         let allSkills = [];
         let build = [];
 
-        function processCSV(csvText) {
-            const lines = csvText.split(/\r?\n/).filter(line => line.trim() !== "");
-            if (lines.length < 2) return;
-            const separator = lines[0].includes(';') ? ';' : ',';
-            allSkills = lines.slice(1).map(line => {
-                const regex = new RegExp(`${separator}(?=(?:(?:[^"]*"){2})*[^"]*$)`);
-                const cols = line.split(regex).map(c => c.replace(/^"|"$/g, '').trim());
-                return { 
-                    elemento: cols[0], 
-                    nome: cols[1], 
-                    categoria: cols[2] ? cols[2].trim() : "", 
-                    custo: parseInt(cols[3]) || 0, 
-                    tipo: cols[4] === "1" ? "Ativa" : "Passiva" 
-                };
-            }).filter(s => s.nome);
-            renderApp();
-        }
-
         function getBaseTree(subElement) {
             for (const [base, subs] of Object.entries(relations)) {
                 if (subs.includes(subElement)) return base;
@@ -215,8 +197,8 @@
             return null;
         }
 
-        function checkRequirements(skill) {
-            if (build.some(s => s.nome === skill.nome)) return { canBuy: false, reason: "Already owned." };
+        function checkRequirements(skill, ignoreMasterLimit = false) {
+            if (build.some(s => s.nome === skill.nome && s.elemento === skill.elemento)) return { canBuy: false, reason: "Already owned." };
 
             const cat = skill.categoria.trim().toUpperCase();
             const el = skill.elemento.trim().toUpperCase();
@@ -226,22 +208,32 @@
             const hasOpenerDesteElemento = build.some(s => s.elemento === skill.elemento && s.categoria.toUpperCase() === 'OPENER');
 
             // --- 1. RULES FOR FREE TREES (RACIAL / STANCES / STYLES) ---
-            const isFreeTree = el.includes('RACIAL') || el.includes('COMBAT STYLES') || cat.includes('STANCE');
+            // Racial skills, including Masters, have no Opener or point prerequisites.
+            const isRacial = relations.Racials.includes(skill.elemento);
+            if (isRacial) {
+                if (!ignoreMasterLimit && cat.includes('MASTER') && tokensUsados >= 2) {
+                    return { canBuy: false, reason: "Master token limit reached." };
+                }
+                return { canBuy: true };
+            }
 
+            const isFreeTree = el.includes('COMBAT STYLES') || cat.includes('STANCE') || el.includes('RACIAL');
             if (isFreeTree) {
+                if (!ignoreMasterLimit && cat.includes('MASTER') && tokensUsados >= 2) {
+                    return { canBuy: false, reason: "Master token limit reached." };
+                }
                 if (cat === 'INTERMEDIATE' || cat === 'MASTER') {
-                    return ptsNoElemento >= 40 ? { canBuy: true } : { canBuy: false, reason: "Requires 40 pts in this tree." };
+                    return ptsNoElemento >= 40
+                        ? { canBuy: true }
+                        : { canBuy: false, reason: "Requires 40 pts in this tree." };
                 }
-                if (cat.includes('MASTER')) {
-                    return tokensUsados < 2 ? { canBuy: true } : { canBuy: false, reason: "Master token limit." };
-                }
-                return { canBuy: true }; // BASIC and common STANCES are always available
+                return { canBuy: true };
             }
 
             // --- 2. RULES FOR SPELLS (ELEMENTS / LINEAGES) ---
             
             // Master Tokens
-            if (cat.includes('MASTER') && tokensUsados >= 2) {
+            if (!ignoreMasterLimit && cat.includes('MASTER') && tokensUsados >= 2) {
                 return { canBuy: false, reason: "Master token limit reached." };
             }
 
@@ -343,7 +335,7 @@
                     
                     // Temporarily remove to check if it would still be "purchasable"
                     const originalItem = build.splice(i, 1)[0];
-                    const validation = checkRequirements(originalItem);
+                    const validation = checkRequirements(originalItem, true);
                     
                     if (validation.canBuy) {
                         // If still valid, put it back
@@ -531,7 +523,7 @@
 
         // Helper function to avoid repeating accordion creation code
         function createTreeGroupHtml(el, skills, openedGroups) {
-            const availableSkills = skills.filter(s => !build.some(b => b.nome === s.nome));
+            const availableSkills = skills.filter(s => !build.some(b => b.nome === s.nome && b.elemento === s.elemento));
             if (availableSkills.length === 0) return null;
 
             const groupWrapper = document.createElement('div');
@@ -642,7 +634,7 @@
 
         async function loadDatabaseOnline() {
             const status = document.getElementById('load-status');
-            const url = './E_Skills_Database_GC.csv';; // <--- PASTE THE URL HERE
+            const url = './E_Skills_Database_GC.csv'; // <--- PASTE THE URL HERE
 
             status.innerText = "Loading data...";
             status.style.color = "var(--accent)";
