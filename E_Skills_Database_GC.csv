@@ -9,6 +9,10 @@ Drakanite;(Drakanite) Wings;BASIC;5;0;;;;;;;
 Drakanite;(Drakanite) Scales;BASIC;5;1;;;;;;;
 Beastkin;(Beastkin) Wild Nature;BASIC;5;1;;;;;;;
 Beastkin;(Beastkin) Hunter's Sight;BASIC;5;1;;;;;;;
+Sirenian;(Sirenian) Aquatic Aspect;BASIC;0;0
+Sirenian;(Sirenian) Oceanic Attunement;BASIC;10;1
+Sirenian;(Sirenian) Manifest Water Spirit;BASIC;5;0
+Sirenian;(Sirenian) Sirenian Transformation;BASIC;5;0
 Gorgon;(Gorgon) Serpentine's Embrace;BASIC;10;1;;;;;;;
 Gorgon;(Gorgon) Hypnotize;BASIC;10;1;;;;;;;
 Sarradian;(Sarradian) Vidrio's Embrace;BASIC;5;1;;;;;;;
@@ -29,6 +33,7 @@ Aerodyne;(Aerodyne) Crystal Heart;BASIC;10;1
 Aerodyne;(Aerodyne) Essence Strike;BASIC;10;1
 Drakanite;(Drakanite) Fire Discount;BASIC;-5;0;;;;;;;
 Combat Styles;Caster Style;STANCE;5;0;;;;;;;
+Combat Styles;Dancer Style;STANCE;5;0;;;;;;;
 Combat Styles;Conjurer Style;STANCE;5;0;;;;;;;
 Combat Styles;Marksman Style;STANCE;5;0;;;;;;;
 Combat Styles;Thief Style;STANCE;5;0;;;;;;;
@@ -238,11 +243,10 @@ Energy;Force Wave;BASIC;10;1;;;;;;;
 Energy;Energy Burst;BASIC;10;1;;;;;;;
 Energy;Energy Beam;BASIC;10;1;;;;;;;
 Energy;Energy Shield;BASIC;10;1;;;;;;;
-Energy;Blue Shroud;AURA;10;0;;;;;;;
 Energy;Rapidfire;INTERMEDIATE;10;1;;;;;;;
 Energy;Ethereal Wings;INTERMEDIATE;10;1;;;;;;;
 Energy;Energy Dive;INTERMEDIATE;10;1;;;;;;;
-Energy;Mega Buster;MASTER;10;1;;;;;;;
+Energy;Blue Shroud;MASTER;10;0;;;;;;;
 Cosmic;Meteor Dash;OPENER;20;1;;;;;;;
 Cosmic;Final Toll;BASIC;10;1;;;;;;;
 Cosmic;Invigorate;BASIC;10;1;;;;;;;
