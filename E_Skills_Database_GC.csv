@@ -103,7 +103,7 @@ Lightning;Lightning Burst;BASIC;10;1;;;;;;;
 Lightning;Lightning Javelin;BASIC;10;1;;;;;;;
 Lightning;Piercing Strike;INTERMEDIATE;10;1;;;;;;;
 Lightning;Arc of Devastation;INTERMEDIATE;10;1;;;;;;;
-Lightning;Storm;MASTER;10;0;;;;;;;
+Lightning;Storm;MASTER;10;1;;;;;;;
 Sound;Sound Strike;OPENER;20;1;;;;;;;
 Sound;Sound Burst;BASIC;10;1;;;;;;;
 Sound;Cascade;BASIC;10;1;;;;;;;
